@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubble</title>
+</head>
+
+<body id="body">
+    <h1>Exploring Event Bubble</h1>
+
+    <section id="list-container">
+        <ul id="list-ul">
+            <li id="item-1">Lorem, ipsum.</li>
+            <li id="item-2">Sequi, sint?</li>
+            <li id="item-3">Nemo, ratione?</li>
+            <li id="item-4">Sunt, sed?</li>
+            <li id="item-5">Explicabo, iusto.</li>
+            <li id="item-6">Ipsam, ea?</li>
+        </ul>
+    </section>
+
+    <script>
+        document.getElementById("item-2").addEventListener("click", function (event) {
+            console.log('Item 2 clicked')
+            event.stopPropagation();
+            // event.stopImmediatePropagation
+            // Eventbubble কে স্টপ করতে হয়  stoprPropagation দিয়ে।
+
+            // প্রথমে ক্যাপচারিং ফেস -> তারপর টার্গেট পেস -> বাবল পেস।
+            // ক্যাপচারিং ফেসে window->document->html->body->table->tbody->tr->td এভাবে নিচের দিকে নামে, নেমে এসে সে টার্গেট ফেসকে ধরে, টার্গেট ফেস ধরার পর সে বাবল করে আবার উপরের দিকে যেতে থাকে, যাওয়া সময় অন্যান্য যতগুলো ইলিমেন্ট পায় যদি সেটা তার পেরেন্ট হয় তবে তাকে শো করে। এভাবে ইভেন্ট বাবল কাজ করে।
+        })
+        document.getElementById("list-ul").addEventListener("click", function () {
+            console.log("UL clicked");
+        });
+        document.getElementById("list-container").addEventListener("click", function () {
+            console.log("Section clicked");
+        });
+        document.getElementById("body").addEventListener("click", function () {
+            console.log("body clicked");
+        });
+    </script>
+</body>
+
+</html>

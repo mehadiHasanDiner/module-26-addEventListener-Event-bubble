@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Delegate</title>
+</head>
+
+<body>
+    <h1>Explore Event Delegate</h1>
+    <section>
+        <ul id="list-container">
+            <li class="item">Lorem, ipsum dolor.</li>
+            <li class="item">Nam, iusto voluptatibus!</li>
+            <li class="item">Quis, quia necessitatibus.</li>
+            <li class="item">Tenetur, dolores corrupti.</li>
+            <li class="item">Debitis, laudantium porro!</li>
+            <li class="item">Possimus, cupiditate ex.</li>
+        </ul>
+        <button id="btn-add-item"> Add Item</button>
+    </section>
+
+    <script>
+        // const items = document.getElementsByClassName('item');
+        // for (const item of items) {
+        //     item.addEventListener('click', function (event) {
+        //         event.target.parentNode.removeChild(event.target);
+        //     });
+        //     // for (const item of items) {
+        //     //     item.addEventListener('click', function () {
+        //     //         console.log(item);
+        //     //     });
+        // }
+
+        document.getElementById('list-container').addEventListener('click', function (event) {
+            event.target.parentNode.removeChild(event.target);
+        });
+
+
+
+        document.getElementById('btn-add-item').addEventListener('click', function () {
+            const listContainer = document.getElementById('list-container');
+            const li = document.createElement('li');
+            li.innerText = "Brand New Item added successfully";
+            li.classList.add('item');
+            listContainer.appendChild(li);
+
+        })
+
+        // ইভেন্ট যদি আমি কখনও কখনও চাইল্ডের মধ্যে এড করতে চাই তাহলে ভাল হয় ঐ ইবৈন্টটা চাইল্ডে এড না করে পেরেন্টে এড করা। এটাই হচ্ছে ইভেন্ট ডেলিগেট করা। 
+    </script>
+</body>
+
+</html>
